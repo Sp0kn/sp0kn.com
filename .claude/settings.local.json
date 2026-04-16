@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npx vite:*)",
+      "Read(//mnt/c/Users/joelh/AppData/Local/Temp/claude/D--Jowel-Coding-sp0kn-com/829cf1a6-2e45-481e-b148-0c0ad5318daa/tasks/**)",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\joelh\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Jowel-Coding-sp0kn-com\\\\829cf1a6-2e45-481e-b148-0c0ad5318daa\\\\tasks\\\\b8lppa706.output'\")",
+      "Bash(jobs)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s http://localhost:8000/api/twitch/clips?limit=12)",
+      "Bash(curl -s http://localhost:8000/api/twitch/clips?limit=12 -v)",
+      "Bash(python -c ':*)",
+      "Bash(curl -s \"http://localhost:8000/api/twitch/clips?limit=3\")",
+      "Bash(python -m json.tool)",
+      "Bash(curl -s \"http://localhost:8000/api/twitch/clips?limit=3&sort=featured\")",
+      "Bash(python -c \"import sys,json; [print\\(c['title']\\) for c in json.load\\(sys.stdin\\)]\")",
+      "Bash(curl -s \"http://localhost:8000/api/twitch/clips?limit=3&sort=recent\")",
+      "Bash(python -c \"import sys,json; [print\\(c['title'], c['created_at']\\) for c in json.load\\(sys.stdin\\)]\")",
+      "Bash(curl -s \"http://localhost:8000/api/twitch/clips?limit=3&sort=popular\")",
+      "Bash(python -c \"import sys,json; [print\\(c['title'], c['view_count']\\) for c in json.load\\(sys.stdin\\)]\")",
+      "Bash(curl -s \"http://localhost:8000/api/twitch/clips?limit=5&sort=recent\")",
+      "Bash(taskkill /F /IM python.exe)",
+      "Bash(curl -s http://localhost:8000/api/discord/feed?limit=3)",
+      "Bash(netstat -aon)",
+      "Bash(taskkill /F /PID 28292)",
+      "Bash(kill -9 28292)"
+    ]
+  }
+}

@@ -74,7 +74,7 @@ export default function Header() {
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img
-                src="/LogoSimpleWhite.png"
+                src="/LogoBanner.png"
                 alt="Sp0kn"
                 className="h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
               />

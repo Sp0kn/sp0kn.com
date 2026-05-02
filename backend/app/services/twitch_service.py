@@ -95,32 +95,45 @@ async def get_clips(limit: int = 10, sort: str = "recent") -> list[TwitchClip]:
     headers  = await _headers()
     user_id  = await _get_user_id()
 
-    # For featured: use is_featured filter
-    # For popular: API returns by view count by default — 1 page of 100 is enough
-    # For recent: paginate many pages (API sorts by views, new low-view clips appear late)
-    params: dict = {"broadcaster_id": user_id, "first": 100}
-    if sort == "featured":
-        params["is_featured"] = "true"
+    # Twitch always returns clips sorted by view_count desc — no sort parameter exists.
+    # started_at/ended_at filter by broadcast date, not clip creation date — unreliable.
+    # For recent: paginate through ALL clips (newest low-view clips sit at the very end).
+    #   20 pages × 100 = 2000 clips — well above the current total, future-proof.
+    # For featured: use is_featured filter, a few pages
+    # For popular: 1 page of 100 is enough (already top by views)
+    async def _paginate(client: httpx.AsyncClient, p: dict, max_pages: int) -> list:
+        collected, cur = [], None
+        for _ in range(max_pages):
+            if cur:
+                p = {**p, "after": cur}
+            r = await client.get("https://api.twitch.tv/helix/clips", headers=headers, params=p)
+            r.raise_for_status()
+            d = r.json()
+            collected.extend(d.get("data", []))
+            cur = d.get("pagination", {}).get("cursor")
+            if not cur or not d.get("data"):
+                break
+        return collected
 
+    base = {"broadcaster_id": user_id, "first": 100}
     all_clips: list = []
-    cursor = None
 
     async with httpx.AsyncClient() as client:
-        pages = {"recent": 11, "featured": 5, "popular": 1}
-        for _ in range(pages.get(sort, 1)):
-            if cursor:
-                params["after"] = cursor
-            resp = await client.get(
-                "https://api.twitch.tv/helix/clips",
-                headers=headers,
-                params=params,
-            )
-            resp.raise_for_status()
-            data = resp.json()
-            all_clips.extend(data.get("data", []))
-            cursor = data.get("pagination", {}).get("cursor")
-            if not cursor or not data.get("data"):
-                break
+        if sort == "featured":
+            all_clips = await _paginate(client, {**base, "is_featured": "true"}, 5)
+        elif sort == "popular":
+            all_clips = await _paginate(client, base, 1)
+        else:  # recent
+            # Twitch silently excludes featured clips from the regular endpoint,
+            # so fetch both buckets and merge by ID before sorting by date.
+            regular  = await _paginate(client, base, 20)
+            featured = await _paginate(client, {**base, "is_featured": "true"}, 5)
+            seen, merged = set(), []
+            for c in regular + featured:
+                if c["id"] not in seen:
+                    seen.add(c["id"])
+                    merged.append(c)
+            all_clips = merged
 
     clips = [
         TwitchClip(

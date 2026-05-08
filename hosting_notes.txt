@@ -1,2 +1,3 @@
 backend: render.com
 frontend: github pages
+hostname: cloudflare registrar

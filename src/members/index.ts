@@ -6,7 +6,7 @@ import _3QCrew from './3QCrew'
 import LaPtiteComic from './LaPtiteComic'
 import MarkMorin from './MarkMorin'
 import Juste_Blood from './Juste_Blood'
-import Rubycat22 from './Rubycat22'
+import RubyCat22 from './RubyCat22'
 import SavageSaskatch from './SavageSaskatch'
 import UrgentPigeon from './UrgentPigeon'
 import YougiDoggyBear from './YougiDoggyBear'
@@ -17,7 +17,7 @@ const members = [
   LaPtiteComic,
   MarkMorin,
   Juste_Blood,
-  Rubycat22,
+  RubyCat22,
   SavageSaskatch,
   UrgentPigeon,
   YougiDoggyBear,

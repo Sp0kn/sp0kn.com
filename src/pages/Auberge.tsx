@@ -1,23 +1,7 @@
-import { FaTwitch } from 'react-icons/fa'
+import { FaDiscord, FaExternalLinkAlt, FaTwitch } from 'react-icons/fa'
 import SectionTitle from '../components/common/SectionTitle'
-
-// TODO: Fill in your team members and info
-// Each member: name, twitchUrl, description, avatarUrl (optional), tags
-const TEAM_MEMBERS: {
-  name: string
-  twitchUrl: string
-  description: string
-  avatarUrl?: string
-  tags: string[]
-}[] = [
-  // Example:
-  // {
-  //   name: 'Sp0kn',
-  //   twitchUrl: 'https://www.twitch.tv/sp0kn',
-  //   description: 'Le fondateur de l\'Auberge.',
-  //   tags: ['Fondateur', 'Gaming'],
-  // },
-]
+import { SOCIAL_LINKS } from '../config/constants'
+import members from '../members'
 
 export default function Auberge() {
   return (
@@ -28,17 +12,18 @@ export default function Auberge() {
         <div className="max-w-2xl mb-12">
           <SectionTitle title="L'Auberge des Streamers" />
           <p className="text-text-secondary leading-relaxed">
-            {/* TODO: Add your team description */}
-            L'Auberge des Streamers est une équipe Twitch francophone qui rassemble des créateurs de contenu
-            passionnés. Un endroit chaleureux où chaque streamer trouve sa place.
+            L'Auberge des Streamers est une équipe Twitch québécoise qui rassemble des créateurs de contenu
+            passionnés. Un espace chaleureux où les streamers peuvent exprimer leur créativité, collaborer
+            et grandir ensemble, tout en offrant à la communauté un environnement sain
+            et sans jugement.
           </p>
         </div>
 
         {/* Values / description block */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {[
-            { emoji: '🏠', title: 'Une maison', description: 'Un espace bienveillant pour tous les streamers, qu\'ils soient débutants ou expérimentés.' },
-            { emoji: '🤝', title: 'Entraide', description: 'Les membres se soutiennent mutuellement : hosting, raids, conseils techniques et bien plus.' },
+            { emoji: '🏠', title: 'Une maison', description: 'Un espace bienveillant pour les streamers et leurs communautés.' },
+            { emoji: '🤝', title: 'Entraide', description: 'Les membres se soutiennent mutuellement: raids, conseils techniques et bien plus.' },
             { emoji: '🌟', title: 'Visibilité', description: 'Grandir ensemble, partager nos audiences et créer des événements communs.' },
           ].map((val) => (
             <div key={val.title} className="card-hover text-center">
@@ -49,10 +34,36 @@ export default function Auberge() {
           ))}
         </div>
 
-        {/* Team members */}
-        <SectionTitle title="Les membres" subtitle="L'équipe de L'Auberge" />
+        {/* Discord CTA */}
+        <div className="mb-10">
+          <a
+            href={SOCIAL_LINKS.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            <FaDiscord className="w-4 h-4" />
+            Rejoindre le Discord
+          </a>
+        </div>
 
-        {TEAM_MEMBERS.length === 0 ? (
+        {/* Team members */}
+        <div className="mb-8">
+          <h2 className="section-title mb-2">Les membres</h2>
+          <div className="h-px w-20 bg-accent-orange mb-3" />
+          <a
+            href="https://www.twitch.tv/team/laubergedesstreamers"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-purple-400 transition-colors"
+          >
+            <FaTwitch className="w-3.5 h-3.5" />
+            L'Auberge sur Twitch
+            <FaExternalLinkAlt className="w-2.5 h-2.5 opacity-60" />
+          </a>
+        </div>
+
+        {members.length === 0 ? (
           <div className="card text-center py-16">
             <p className="text-5xl mb-4">🚧</p>
             <p className="text-text-primary font-semibold text-lg mb-2">Liste en construction</p>
@@ -60,9 +71,9 @@ export default function Auberge() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {TEAM_MEMBERS.map((member) => (
+            {members.map((member) => (
               <a
-                key={member.name}
+                key={member.id}
                 href={member.twitchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -80,15 +91,10 @@ export default function Auberge() {
                   </div>
                 )}
                 <h3 className="font-semibold text-text-primary group-hover:text-accent-orange transition-colors">{member.name}</h3>
-                <p className="text-text-muted text-xs mt-1 line-clamp-2">{member.description}</p>
-                <div className="flex flex-wrap justify-center gap-1 mt-2">
-                  {member.tags.map((t) => (
-                    <span key={t} className="text-xs bg-space-700 border border-space-600 text-text-muted px-2 py-0.5 rounded-full">{t}</span>
-                  ))}
-                </div>
+                <p className="text-text-muted text-xs mt-1 line-clamp-3">{member.description}</p>
                 <div className="flex items-center justify-center gap-1.5 mt-3 text-text-faint text-xs group-hover:text-purple-400 transition-colors">
                   <FaTwitch className="w-3 h-3" />
-                  Voir le stream
+                  Twitch
                 </div>
               </a>
             ))}

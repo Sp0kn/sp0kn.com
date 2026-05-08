@@ -11,14 +11,6 @@ const SOCIALS = [
   { href: SOCIAL_LINKS.patreon,   Icon: FaPatreon,   label: 'Patreon',   color: 'text-accent-orange', hoverBorder: 'hover:border-accent-orange/40' },
 ]
 
-// TODO: Replace with real stats once you connect the Twitch API
-const STATS = [
-  { label: 'Followers', value: '—' },
-  { label: 'Streams', value: '—' },
-  { label: 'Heures streamées', value: '—' },
-  { label: 'Clips créés', value: '—' },
-]
-
 export default function APropos() {
   return (
     <div className="page-hero">
@@ -40,33 +32,25 @@ export default function APropos() {
             <h1 className="font-display text-4xl font-bold text-accent-orange tracking-widest mb-1">Sp0kn</h1>
             <p className="text-text-muted text-sm mb-4">Streamer Twitch Québécois</p>
             <div className="text-text-secondary leading-relaxed space-y-3">
-              {/* TODO: Replace with your real bio */}
               <p>
-                Bienvenue sur ma page ! Je suis Sp0kn, streamer francophone passionné de jeux vidéo et de création de contenu.
+                Salut! Je suis Sp0kn, streamer québécois passionné de jeux vidéo et de musique.
               </p>
               <p>
-                Je stream régulièrement sur Twitch et je suis à la tête de L'Auberge des Streamers et de la Fondation des Gardiens Virtuels.
+                Je stream régulièrement sur Twitch, normalement 3 soirs par semaine (heure du Québec).
+              </p>
+			  <p>
+                Je fais aussi parti d'une merveilleuse équipe Twitch qui s'appelle L'Auberge des streamers, 
+				un collectif de streamers Québécois avec le même vibe et la même passion.
               </p>
               <p>
-                {/* TODO: Add more personal info, your streaming history, what you play, etc. */}
-                N'hésite pas à me rejoindre sur Discord pour faire partie de la communauté des Aliens !
+                N'hésite pas à nous rejoindre sur Discord pour faire partie de la communauté! 😊
               </p>
             </div>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
-          {STATS.map(({ label, value }) => (
-            <div key={label} className="card text-center">
-              <p className="font-display text-3xl font-bold text-accent-orange">{value}</p>
-              <p className="text-text-muted text-xs mt-1">{label}</p>
-            </div>
-          ))}
-        </div>
-
         {/* Socials */}
-        <SectionTitle title="Me retrouver" subtitle="Sur tous les réseaux" />
+        <SectionTitle title="Me retrouver" />
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {SOCIALS.map(({ href, Icon, label, color, hoverBorder }) => (
             <a

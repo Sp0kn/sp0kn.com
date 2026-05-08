@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <Link to="/" className="inline-block">
-              <img src="/LogoSimpleWhite.png" alt="Sp0kn" className="h-10 w-auto" />
+              <img src="/LogoBanner.png" alt="Sp0kn" className="h-10 w-auto" />
             </Link>
             <p className="text-text-muted text-sm leading-relaxed max-w-xs">
               {SITE_CONFIG.tagline}
@@ -72,7 +72,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-text-faint text-xs">
           <p>© {new Date().getFullYear()} Sp0kn. Tous droits réservés.</p>
-          <p>Fait avec ❤️ par la communauté</p>
+          <p>Fait avec ❤️ par Sp0kn</p>
         </div>
       </div>
     </footer>

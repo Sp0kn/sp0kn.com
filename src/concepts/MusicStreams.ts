@@ -12,7 +12,7 @@ const MusicStreams: Concept = {
   emoji: '🎤',
   links: [
 	{
-	  label: 'List des chansons',
+	  label: 'Liste des chansons',
 	  url: 'https://www.streamersonglist.com/t/sp0kn/songs',
 	},
   ],

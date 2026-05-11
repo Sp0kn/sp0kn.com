@@ -21,7 +21,7 @@ async def send_suggestion(message: str, pseudonyme: str | None = None) -> bool:
       <hr style="border:none;border-top:1px solid #30363D;margin:16px 0;" />
       <p><strong>Pseudo :</strong> {sender_label}</p>
       <div style="background:#161B22;border:1px solid #30363D;border-radius:8px;padding:16px;margin-top:12px;">
-        <p style="margin:0;white-space:pre-wrap;">{message}</p>
+        <p style="margin:0;white-space:pre-wrap;color:#E6EDF3;">{message}</p>
       </div>
     </div>
     """

@@ -2,3 +2,4 @@ backend: render.com
 frontend: github pages
 hostname: cloudflare registrar
 sugg box: resend.com
+backend monitor and ping to keep backend alive: uptimerobot.com

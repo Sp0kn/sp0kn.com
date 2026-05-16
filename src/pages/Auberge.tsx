@@ -11,12 +11,19 @@ export default function Auberge() {
         {/* Header */}
         <div className="max-w-2xl mb-12">
           <SectionTitle title="L'Auberge des Streamers" />
-          <p className="text-text-secondary leading-relaxed">
-            L'Auberge des Streamers est une équipe Twitch québécoise qui rassemble des créateurs de contenu
-            passionnés. Un espace chaleureux où les streamers peuvent exprimer leur créativité, collaborer
-            et grandir ensemble, tout en offrant à la communauté un environnement sain
-            et sans jugement.
-          </p>
+          <div className="flex items-start gap-6 mt-4">
+            <img
+              src="/auberge-logo.png"
+              alt="L'Auberge des Streamers"
+              className="w-32 h-32 object-contain shrink-0"
+            />
+            <p className="text-text-secondary leading-relaxed">
+              L'Auberge des Streamers est une équipe Twitch québécoise qui rassemble des créateurs de contenu
+              passionnés. Un espace chaleureux où les streamers peuvent exprimer leur créativité, collaborer
+              et grandir ensemble, tout en offrant à la communauté un environnement sain
+              et sans jugement.
+            </p>
+          </div>
         </div>
 
         {/* Values / description block */}

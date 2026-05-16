@@ -24,7 +24,7 @@ export default function TipsModal({ onClose }: Props) {
             </div>
             <div>
               <h2 className="font-display text-lg font-bold text-text-primary tracking-wide">Soutenir Sp0kn</h2>
-              <p className="text-text-muted text-xs">Chaque soutien compte énormément ❤️</p>
+              <p className="text-text-muted text-xs">Merci ❤️</p>
             </div>
           </div>
           <button onClick={onClose} className="text-text-muted hover:text-text-primary transition-colors">
@@ -79,7 +79,7 @@ export default function TipsModal({ onClose }: Props) {
 
         <div className="px-6 pb-6 text-center">
           <p className="text-text-faint text-xs">
-            Merci de soutenir le stream ! Ça aide vraiment à continuer à créer du contenu. 🙏
+            Merci!
           </p>
         </div>
       </div>
